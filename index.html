@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface com Nova Cor</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #39016a;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        .button {
+            padding: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #39016a, #5a1a95);
+            background-size: 300% 300%;
+            animation: gradientAnimation 5s ease infinite;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .button {
+                width: 220px;
+                height: 220px;
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .button {
+                width: 180px;
+                height: 180px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                width: 150px;
+                height: 150px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>UnifyHub</h1>
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="location.href='diversao.html'">Diversão</button>
+        <button class="button" onclick="location.href='adulto.html'">Modo Adulto</button>
+        <button class="button" onclick="location.href='filmes.html'">Filmes</button>
+        <button class="button" onclick="location.href='mds.html'">MDS</button>
+    </div>
+
+    <script>
+        // Exemplo de animação dinâmica de transição ao mudar de página
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = e.target.getAttribute('onclick').match(/'(.*)'/)[1];
+                document.body.style.opacity = 0;
+                setTimeout(() => location.href = href, 300);
+            });
+        });
+
+        // Adicionando funcionalidade de Service Worker (se disponível)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js').then(() => {
+                console.log('Service Worker registrado com sucesso.');
+            }).catch(err => console.error('Erro ao registrar Service Worker:', err));
+        }
+    </script>
+</body>
+</html>
