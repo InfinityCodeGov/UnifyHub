@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface com Nova Cor</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #39016a;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        .button {
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #39016a, #5a1a95);
+            background-size: 300% 300%;
+            animation: gradientAnimation 5s ease infinite;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .button {
+                width: 180px;
+                height: 180px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .button {
+                width: 150px;
+                height: 150px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                width: 120px;
+                height: 120px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>UnifyHub</h1>
+    </div>
+
+    <div class="button-container">
+        <a class="button" href="https://www.xnxx.com/" target="_blank">XNXX</a>
+        <a class="button" href="https://pt.pornhub.com/" target="_blank">PornHub</a>
+        <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank">XVideos</a>
+        <a class="button" href="https://girlcum.video/" target="_blank">GirlCum</a>
+        <a class="button" href="https://www.erome.com/explore" target="_blank">Erome</a>
+        <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank">XPaja</a>
+        <a class="button" href="https://www.pornocarioca.com/" target="_blank">PornoCarioca</a>
+        <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank">xHamster</a>
+        <a class="button" href="https://www.pornolandia.xxx/" target="_blank">Pornolândia</a>
+        <a class="button" href="https://www.naoconto.com/" target="_blank">Não Conto</a>
+        <a class="button" href="https://www.xnalgas.com/" target="_blank">Xnalgas</a>
+        <a class="button" href="https://sxyprn.com/" target="_blank">Sxyprn</a>
+        <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank">Porn Dude</a>
+    </div>
+</body>
+</html>
