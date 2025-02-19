@@ -14,8 +14,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #39016a;
-            background-size: cover;
+            background-color: #000000; /* Alterado para fundo preto */
             color: white;
             display: flex;
             flex-direction: column;
@@ -52,7 +51,7 @@
             font-weight: bold;
             border: none;
             border-radius: 20px;
-            background: linear-gradient(45deg, #39016a, #5a1a95);
+            background: linear-gradient(45deg, #1a1a1a, #333333); /* Degradê de preto para cinza escuro */
             background-size: 300% 300%;
             animation: gradientAnimation 5s ease infinite;
             color: white;
@@ -64,11 +63,12 @@
             justify-content: center;
             align-items: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; /* Remove sublinhado dos links */
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3); /* Sombra clara para destaque */
         }
 
         @media (max-width: 1024px) {
