@@ -46,52 +46,52 @@
         }
 
         .button {
-            padding: 50px;
-            font-size: 30px;
+            padding: 20px;
+            font-size: 18px;
             font-weight: bold;
             border: none;
             border-radius: 20px;
-            background: linear-gradient(45deg, #1a1a1a, #333333); /* Degradê de cinza para preto */
+            background: linear-gradient(45deg, #1a1a1a, #333333); /* Degradê de preto para cinza escuro */
             background-size: 300% 300%;
             animation: gradientAnimation 5s ease infinite;
             color: white;
             cursor: pointer;
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
             text-align: center;
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; /* Remove sublinhado dos links */
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3); /* Sombra clara para destaque */
         }
 
         @media (max-width: 1024px) {
             .button {
-                width: 220px;
-                height: 220px;
-                font-size: 26px;
+                width: 180px;
+                height: 180px;
+                font-size: 16px;
             }
         }
 
         @media (max-width: 768px) {
             .button {
-                width: 180px;
-                height: 180px;
-                font-size: 24px;
+                width: 150px;
+                height: 150px;
+                font-size: 14px;
             }
         }
 
         @media (max-width: 480px) {
             .button {
-                width: 150px;
-                height: 150px;
-                font-size: 20px;
+                width: 120px;
+                height: 120px;
+                font-size: 12px;
             }
         }
     </style>
@@ -102,30 +102,19 @@
     </div>
 
     <div class="button-container">
-        <button class="button" onclick="location.href='diversao.html'">Diversão</button>
-        <button class="button" onclick="location.href='adulto.html'">Modo Adulto</button>
-        <button class="button" onclick="location.href='filmes.html'">Filmes</button>
-        <button class="button" onclick="location.href='mds.html'">MDS</button>
+        <a class="button" href="https://www.xnxx.com/" target="_blank">XNXX</a>
+        <a class="button" href="https://pt.pornhub.com/" target="_blank">PornHub</a>
+        <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank">XVideos</a>
+        <a class="button" href="https://girlcum.video/" target="_blank">GirlCum</a>
+        <a class="button" href="https://www.erome.com/explore" target="_blank">Erome</a>
+        <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank">XPaja</a>
+        <a class="button" href="https://www.pornocarioca.com/" target="_blank">PornoCarioca</a>
+        <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank">xHamster</a>
+        <a class="button" href="https://www.pornolandia.xxx/" target="_blank">Pornolândia</a>
+        <a class="button" href="https://www.naoconto.com/" target="_blank">Não Conto</a>
+        <a class="button" href="https://www.xnalgas.com/" target="_blank">Xnalgas</a>
+        <a class="button" href="https://sxyprn.com/" target="_blank">Sxyprn</a>
+        <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank">Porn Dude</a>
     </div>
-
-    <script>
-        // Exemplo de animação dinâmica de transição ao mudar de página
-        const buttons = document.querySelectorAll('.button');
-        buttons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const href = e.target.getAttribute('onclick').match(/'(.*)'/)[1];
-                document.body.style.opacity = 0;
-                setTimeout(() => location.href = href, 300);
-            });
-        });
-
-        // Adicionando funcionalidade de Service Worker (se disponível)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js').then(() => {
-                console.log('Service Worker registrado com sucesso.');
-            }).catch(err => console.error('Erro ao registrar Service Worker:', err));
-        }
-    </script>
 </body>
 </html>
