@@ -1,99 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interface com Nova Cor</title>
     <style>
-        @keyframes gradientAnimation {
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 5s ease infinite;
+        }
+
+        @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000000; /* Alterado para fundo preto */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            height: 100vh;
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 5000px;
+            overflow: hidden;
+            border-radius: 160px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .header {
+        .carousel-slide {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .header h1 {
-            font-size: 36px;
-            color: white;
-        }
-
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            flex-grow: 1;
-            align-items: center;
+            transition: transform 0.3s ease-in-out;
         }
 
         .button {
-            padding: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #1a1a1a, #333333); /* Degradê de preto para cinza escuro */
-            background-size: 300% 300%;
-            animation: gradientAnimation 5s ease infinite;
-            color: white;
-            cursor: pointer;
-            text-align: center;
-            width: 200px;
-            height: 200px;
+            flex: 0 0 100%;
+            height: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 19px;
+            font-weight: bold;
+            border: none;
+            border-radius: 500px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none; /* Remove sublinhado dos links */
+            text-decoration: none;
+            margin: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-size: 200% auto;
+            background-position: center;
         }
 
         .button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3); /* Sombra clara para destaque */
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3);
+            background-position: right center;
         }
 
-        @media (max-width: 1024px) {
-            .button {
-                width: 180px;
-                height: 180px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .button {
-                width: 150px;
-                height: 150px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .button {
-                width: 120px;
-                height: 120px;
-                font-size: 12px;
-            }
-        }
+        .button:nth-child(1) { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+        .button:nth-child(2) { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+        .button:nth-child(3) { background: linear-gradient(45deg, #ff6a00, #ee0979); }
+        .button:nth-child(4) { background: linear-gradient(45deg, #42e695, #3bb2b8); }
+        .button:nth-child(5) { background: linear-gradient(45deg, #f7971e, #ffd200); }
+        .button:nth-child(6) { background: linear-gradient(45deg, #c31432, #240b36); }
+        .button:nth-child(7) { background: linear-gradient(45deg, #34e89e, #0f3443); }
+        .button:nth-child(8) { background: linear-gradient(45deg, #f953c6, #b91d73); }
+        .button:nth-child(9) { background: linear-gradient(45deg, #4e54c8, #8f94fb); }
+        .button:nth-child(10) { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+        .button:nth-child(11) { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+        .button:nth-child(12) { background: linear-gradient(45deg, #ff6a00, #ee0979); }
+        .button:nth-child(13) { background: linear-gradient(45deg, #42e695, #3bb2b8); }
     </style>
 </head>
 <body>
@@ -101,20 +97,76 @@
         <h1>UnifyHub</h1>
     </div>
 
-    <div class="button-container">
-        <a class="button" href="https://www.xnxx.com/" target="_blank">XNXX</a>
-        <a class="button" href="https://pt.pornhub.com/" target="_blank">PornHub</a>
-        <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank">XVideos</a>
-        <a class="button" href="https://girlcum.video/" target="_blank">GirlCum</a>
-        <a class="button" href="https://www.erome.com/explore" target="_blank">Erome</a>
-        <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank">XPaja</a>
-        <a class="button" href="https://www.pornocarioca.com/" target="_blank">PornoCarioca</a>
-        <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank">xHamster</a>
-        <a class="button" href="https://www.pornolandia.xxx/" target="_blank">Pornolândia</a>
-        <a class="button" href="https://www.naoconto.com/" target="_blank">Não Conto</a>
-        <a class="button" href="https://www.xnalgas.com/" target="_blank">Xnalgas</a>
-        <a class="button" href="https://sxyprn.com/" target="_blank">Sxyprn</a>
-        <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank">Porn Dude</a>
+    <div class="carousel-container">
+        <div class="carousel-slide" id="carouselSlide">
+            <a class="button" href="https://www.xnxx.com/" target="_blank">XNXX</a>
+            <a class="button" href="https://pt.pornhub.com/" target="_blank">PornHub</a>
+            <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank">XVideos</a>
+            <a class="button" href="https://girlcum.video/" target="_blank">GirlCum</a>
+            <a class="button" href="https://www.erome.com/explore" target="_blank">Erome</a>
+            <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank">XPaja</a>
+            <a class="button" href="https://www.pornocarioca.com/" target="_blank">PornoCarioca</a>
+            <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank">xHamster</a>
+            <a class="button" href="https://www.pornolandia.xxx/" target="_blank">Pornolândia</a>
+            <a class="button" href="https://www.naoconto.com/" target="_blank">Não Conto</a>
+            <a class="button" href="https://www.xnalgas.com/" target="_blank">Xnalgas</a>
+            <a class="button" href="https://sxyprn.com/" target="_blank">Sxyprn</a>
+            <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank">Porn Dude</a>
+        </div>
     </div>
+
+    <script>
+        const carouselSlide = document.getElementById('carouselSlide');
+        const buttons = document.querySelectorAll('.carousel-slide .button');
+        let startX;
+        let isDragging = false;
+        let currentTranslate = 0;
+        let previousTranslate = 0;
+        let currentIndex = 0;
+
+        carouselSlide.addEventListener('touchstart', touchStart);
+        carouselSlide.addEventListener('touchend', touchEnd);
+        carouselSlide.addEventListener('touchmove', touchMove);
+
+        function touchStart(event) {
+            startX = event.touches[0].clientX;
+            isDragging = true;
+            carouselSlide.style.transition = 'none';
+        }
+
+        function touchEnd() {
+            isDragging = false;
+            const movedBy = currentTranslate - previousTranslate;
+
+            if (movedBy < -10 && currentIndex < buttons.length - 1) {
+                currentIndex += 1;
+            }
+
+            if (movedBy > 10 && currentIndex > 0) {
+                currentIndex -= 1;
+            }
+
+            setPositionByIndex();
+        }
+
+        function touchMove(event) {
+            if (isDragging) {
+                const currentPosition = event.touches[0].clientX;
+                currentTranslate = previousTranslate + currentPosition - startX;
+                setSliderPosition();
+            }
+        }
+
+        function setSliderPosition() {
+            carouselSlide.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * -carouselSlide.clientWidth;
+            previousTranslate = currentTranslate;
+            carouselSlide.style.transition = 'transform 0.3s ease-in-out';
+            setSliderPosition();
+        }
+    </script>
 </body>
 </html>
