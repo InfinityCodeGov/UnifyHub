@@ -12,13 +12,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            overflow: auto; /* Permite rolagem vertical */
         }
 
         .header {
-            margin-bottom: 20px;
+            margin: 20px 0; /* Espaçamento acima e abaixo do título */
         }
 
         .header h1 {
@@ -37,44 +35,70 @@
         }
 
         .carousel-container {
-            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             width: 100%;
-            max-width: 5000px;
-            overflow: hidden;
-            border-radius: 160px;
+            max-width: 1000px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-        }
-
         .button {
-            flex: 0 0 100%;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 19px;
+            font-size: 16px;
             font-weight: bold;
             border: none;
-            border-radius: 500px;
+            border-radius: 20px;
             color: white;
             cursor: pointer;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
-            margin: 5px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
             background-size: 200% auto;
             background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+            background-size: 200% 200%;
+            animation: gradientShadow 5s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradientShadow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .button:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3);
             background-position: right center;
+        }
+
+        .button span {
+            position: relative;
+            z-index: 1;
         }
 
         .button:nth-child(1) { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
@@ -98,75 +122,19 @@
     </div>
 
     <div class="carousel-container">
-        <div class="carousel-slide" id="carouselSlide">
-            <a class="button" href="https://www.xnxx.com/" target="_blank">XNXX</a>
-            <a class="button" href="https://pt.pornhub.com/" target="_blank">PornHub</a>
-            <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank">XVideos</a>
-            <a class="button" href="https://girlcum.video/" target="_blank">GirlCum</a>
-            <a class="button" href="https://www.erome.com/explore" target="_blank">Erome</a>
-            <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank">XPaja</a>
-            <a class="button" href="https://www.pornocarioca.com/" target="_blank">PornoCarioca</a>
-            <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank">xHamster</a>
-            <a class="button" href="https://www.pornolandia.xxx/" target="_blank">Pornolândia</a>
-            <a class="button" href="https://www.naoconto.com/" target="_blank">Não Conto</a>
-            <a class="button" href="https://www.xnalgas.com/" target="_blank">Xnalgas</a>
-            <a class="button" href="https://sxyprn.com/" target="_blank">Sxyprn</a>
-            <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank">Porn Dude</a>
-        </div>
+        <a class="button" href="https://www.xnxx.com/" target="_blank"><span>XNXX</span></a>
+        <a class="button" href="https://pt.pornhub.com/" target="_blank"><span>PornHub</span></a>
+        <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank"><span>XVideos</span></a>
+        <a class="button" href="https://girlcum.video/" target="_blank"><span>GirlCum</span></a>
+        <a class="button" href="https://www.erome.com/explore" target="_blank"><span>Erome</span></a>
+        <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank"><span>XPaja</span></a>
+        <a class="button" href="https://www.pornocarioca.com/" target="_blank"><span>PornoCarioca</span></a>
+        <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank"><span>xHamster</span></a>
+        <a class="button" href="https://www.pornolandia.xxx/" target="_blank"><span>Pornolândia</span></a>
+        <a class="button" href="https://www.naoconto.com/" target="_blank"><span>Não Conto</span></a>
+        <a class="button" href="https://www.xnalgas.com/" target="_blank"><span>Xnalgas</span></a>
+        <a class="button" href="https://sxyprn.com/" target="_blank"><span>Sxyprn</span></a>
+        <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank"><span>Porn Dude</span></a>
     </div>
-
-    <script>
-        const carouselSlide = document.getElementById('carouselSlide');
-        const buttons = document.querySelectorAll('.carousel-slide .button');
-        let startX;
-        let isDragging = false;
-        let currentTranslate = 0;
-        let previousTranslate = 0;
-        let currentIndex = 0;
-
-        carouselSlide.addEventListener('touchstart', touchStart);
-        carouselSlide.addEventListener('touchend', touchEnd);
-        carouselSlide.addEventListener('touchmove', touchMove);
-
-        function touchStart(event) {
-            startX = event.touches[0].clientX;
-            isDragging = true;
-            carouselSlide.style.transition = 'none';
-        }
-
-        function touchEnd() {
-            isDragging = false;
-            const movedBy = currentTranslate - previousTranslate;
-
-            if (movedBy < -10 && currentIndex < buttons.length - 1) {
-                currentIndex += 1;
-            }
-
-            if (movedBy > 10 && currentIndex > 0) {
-                currentIndex -= 1;
-            }
-
-            setPositionByIndex();
-        }
-
-        function touchMove(event) {
-            if (isDragging) {
-                const currentPosition = event.touches[0].clientX;
-                currentTranslate = previousTranslate + currentPosition - startX;
-                setSliderPosition();
-            }
-        }
-
-        function setSliderPosition() {
-            carouselSlide.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function setPositionByIndex() {
-            currentTranslate = currentIndex * -carouselSlide.clientWidth;
-            previousTranslate = currentTranslate;
-            carouselSlide.style.transition = 'transform 0.3s ease-in-out';
-            setSliderPosition();
-        }
-    </script>
 </body>
 </html>
