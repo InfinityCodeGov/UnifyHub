@@ -3,30 +3,34 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnifyHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: white;
+            background-color: #121212;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: auto;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 20px;
         }
 
         .header {
-            margin: 20px 0;
+            margin-bottom: 30px;
             text-align: center;
-        }
-
-        .header h1 {
-            font-size: 28px;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
             background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient 5s ease infinite;
+            letter-spacing: 3px;
         }
 
         @keyframes gradient {
@@ -35,55 +39,21 @@
             100% { background-position: 0% 50%; }
         }
 
-        .search-bar {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .search-bar form {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-        }
-
-        .search-bar input {
-            flex: 1;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            margin-right: 10px;
-            font-size: 16px;
-        }
-
-        .search-bar button {
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #2575fc;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            background-color: #1a5bbf;
-        }
-
         .carousel-container {
-            display: none;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
             width: 100%;
             max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            overflow-y: auto;
+            max-height: 80vh;
         }
 
         .button {
-            width: 100px;
+            width: 100%;
             height: 100px;
             display: flex;
             justify-content: center;
@@ -91,78 +61,46 @@
             font-size: 14px;
             font-weight: bold;
             border: none;
-            border-radius: 20px;
-            color: white;
+            border-radius: 15px;
+            color: #ffffff;
             cursor: pointer;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
-            margin: 5px;
-            background-size: 200% auto;
-            background-position: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-            background-size: 200% 200%;
-            animation: gradientShadow 5s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes gradientShadow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.3);
-            background-position: right center;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
         }
 
         .button span {
             position: relative;
             z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>UnifyHub</h1>
-    </div>
-
-    <div class="search-bar">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <input type="text" name="q" placeholder="Pesquisar no Google">
-            <button type="submit">Pesquisar</button>
-        </form>
+        UnifyHub
     </div>
 
     <div class="carousel-container" id="button-container">
-        <!-- Botões adicionados aparecem aqui -->
+        <!-- Botões carregados do Firebase aparecerão aqui -->
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCHMuTsq6KHAG6zJfw01LBHbwluSGJMMvM",
             authDomain: "unifyhub-2fedc.firebaseapp.com",
@@ -173,57 +111,38 @@
             measurementId: "G-220W75C40Z"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Função para lidar com clique no site
-        function handleSiteClick(event, url) {
-            event.preventDefault();
-            var userConfirmed = confirm("Deseja adicionar este site aos seus botões?");
-            if (userConfirmed) {
-                addSiteToFirebase(url);
-            }
-            window.open(url, '_blank');
-        }
-
-        // Função para adicionar site ao Firebase
-        async function addSiteToFirebase(url) {
-            try {
-                await addDoc(collection(db, "sites"), { url: url });
-                console.log("Site adicionado com sucesso!");
-                loadSitesFromFirebase(); // Atualiza a lista de botões após adicionar
-            } catch (error) {
-                console.error("Erro ao adicionar site: ", error);
-            }
-        }
-
-        // Carregar sites do Firebase
         async function loadSitesFromFirebase() {
             const container = document.getElementById('button-container');
-            container.innerHTML = ''; // Limpa botões existentes
             const querySnapshot = await getDocs(collection(db, "sites"));
             querySnapshot.forEach((doc) => {
-                createButton(doc.data().url);
+                createButton(doc.data().name, doc.data().url);
             });
-            if (!querySnapshot.empty) {
-                container.style.display = 'flex'; // Exibe o container se houver botões
-            }
+            animateButtons();
         }
 
-        // Função para criar botão a partir de URL
-        function createButton(url) {
+        function createButton(name, url) {
             const container = document.getElementById('button-container');
             const button = document.createElement('a');
             button.className = 'button';
             button.href = url;
             button.target = '_blank';
-            button.onclick = function(event) { handleSiteClick(event, url); };
-            button.innerHTML = `<span>${new URL(url).hostname}</span>`;
+            button.innerHTML = `<span>${name}</span>`;
             container.appendChild(button);
         }
 
-        // Carregar sites ao inicializar
+        function animateButtons() {
+            gsap.from(".button", {
+                duration: 1,
+                opacity: 0,
+                y: 20,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+        }
+
         window.onload = loadSitesFromFirebase;
     </script>
 </body>
