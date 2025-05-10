@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface com Nova Cor</title>
+    <title>UnifyHub</title>
     <style>
         body {
             margin: 0;
@@ -12,11 +12,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: auto; /* Permite rolagem vertical */
+            overflow: auto;
         }
 
         .header {
-            margin: 20px 0; /* Espaçamento acima e abaixo do título */
+            margin: 20px 0;
+            text-align: center;
         }
 
         .header h1 {
@@ -34,22 +35,60 @@
             100% { background-position: 0% 50%; }
         }
 
-        .carousel-container {
+        .search-bar {
+            width: 100%;
             display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar form {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #2575fc;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #1a5bbf;
+        }
+
+        .carousel-container {
+            display: none;
             justify-content: center;
             flex-wrap: wrap;
             width: 100%;
-            max-width: 1000px;
+            max-width: 600px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
         }
 
         .button {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             border: none;
             border-radius: 20px;
@@ -58,7 +97,7 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
-            margin: 10px;
+            margin: 5px;
             background-size: 200% auto;
             background-position: center;
             position: relative;
@@ -100,20 +139,6 @@
             position: relative;
             z-index: 1;
         }
-
-        .button:nth-child(1) { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
-        .button:nth-child(2) { background: linear-gradient(45deg, #6a11cb, #2575fc); }
-        .button:nth-child(3) { background: linear-gradient(45deg, #ff6a00, #ee0979); }
-        .button:nth-child(4) { background: linear-gradient(45deg, #42e695, #3bb2b8); }
-        .button:nth-child(5) { background: linear-gradient(45deg, #f7971e, #ffd200); }
-        .button:nth-child(6) { background: linear-gradient(45deg, #c31432, #240b36); }
-        .button:nth-child(7) { background: linear-gradient(45deg, #34e89e, #0f3443); }
-        .button:nth-child(8) { background: linear-gradient(45deg, #f953c6, #b91d73); }
-        .button:nth-child(9) { background: linear-gradient(45deg, #4e54c8, #8f94fb); }
-        .button:nth-child(10) { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
-        .button:nth-child(11) { background: linear-gradient(45deg, #6a11cb, #2575fc); }
-        .button:nth-child(12) { background: linear-gradient(45deg, #ff6a00, #ee0979); }
-        .button:nth-child(13) { background: linear-gradient(45deg, #42e695, #3bb2b8); }
     </style>
 </head>
 <body>
@@ -121,20 +146,85 @@
         <h1>UnifyHub</h1>
     </div>
 
-    <div class="carousel-container">
-        <a class="button" href="https://www.xnxx.com/" target="_blank"><span>XNXX</span></a>
-        <a class="button" href="https://pt.pornhub.com/" target="_blank"><span>PornHub</span></a>
-        <a class="button" href="https://www.xvideos.com/lang/portugues/7" target="_blank"><span>XVideos</span></a>
-        <a class="button" href="https://girlcum.video/" target="_blank"><span>GirlCum</span></a>
-        <a class="button" href="https://www.erome.com/explore" target="_blank"><span>Erome</span></a>
-        <a class="button" href="https://www.xpaja.net/?ref=porndude" target="_blank"><span>XPaja</span></a>
-        <a class="button" href="https://www.pornocarioca.com/" target="_blank"><span>PornoCarioca</span></a>
-        <a class="button" href="https://xhamster.com/categories/latina/best" target="_blank"><span>xHamster</span></a>
-        <a class="button" href="https://www.pornolandia.xxx/" target="_blank"><span>Pornolândia</span></a>
-        <a class="button" href="https://www.naoconto.com/" target="_blank"><span>Não Conto</span></a>
-        <a class="button" href="https://www.xnalgas.com/" target="_blank"><span>Xnalgas</span></a>
-        <a class="button" href="https://sxyprn.com/" target="_blank"><span>Sxyprn</span></a>
-        <a class="button" href="https://theporndude.com/pt/top-latin-porn-tube-sites" target="_blank"><span>Porn Dude</span></a>
+    <div class="search-bar">
+        <form action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Pesquisar no Google">
+            <button type="submit">Pesquisar</button>
+        </form>
     </div>
+
+    <div class="carousel-container" id="button-container">
+        <!-- Botões adicionados aparecem aqui -->
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHMuTsq6KHAG6zJfw01LBHbwluSGJMMvM",
+            authDomain: "unifyhub-2fedc.firebaseapp.com",
+            projectId: "unifyhub-2fedc",
+            storageBucket: "unifyhub-2fedc.firebasestorage.app",
+            messagingSenderId: "70946410932",
+            appId: "1:70946410932:web:61e66db07eb273c4fc62e1",
+            measurementId: "G-220W75C40Z"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Função para lidar com clique no site
+        function handleSiteClick(event, url) {
+            event.preventDefault();
+            var userConfirmed = confirm("Deseja adicionar este site aos seus botões?");
+            if (userConfirmed) {
+                addSiteToFirebase(url);
+            }
+            window.open(url, '_blank');
+        }
+
+        // Função para adicionar site ao Firebase
+        async function addSiteToFirebase(url) {
+            try {
+                await addDoc(collection(db, "sites"), { url: url });
+                console.log("Site adicionado com sucesso!");
+                loadSitesFromFirebase(); // Atualiza a lista de botões após adicionar
+            } catch (error) {
+                console.error("Erro ao adicionar site: ", error);
+            }
+        }
+
+        // Carregar sites do Firebase
+        async function loadSitesFromFirebase() {
+            const container = document.getElementById('button-container');
+            container.innerHTML = ''; // Limpa botões existentes
+            const querySnapshot = await getDocs(collection(db, "sites"));
+            querySnapshot.forEach((doc) => {
+                createButton(doc.data().url);
+            });
+            if (!querySnapshot.empty) {
+                container.style.display = 'flex'; // Exibe o container se houver botões
+            }
+        }
+
+        // Função para criar botão a partir de URL
+        function createButton(url) {
+            const container = document.getElementById('button-container');
+            const button = document.createElement('a');
+            button.className = 'button';
+            button.href = url;
+            button.target = '_blank';
+            button.onclick = function(event) { handleSiteClick(event, url); };
+            button.innerHTML = `<span>${new URL(url).hostname}</span>`;
+            container.appendChild(button);
+        }
+
+        // Carregar sites ao inicializar
+        window.onload = loadSitesFromFirebase;
+    </script>
 </body>
 </html>
